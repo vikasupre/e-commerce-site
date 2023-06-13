@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Mobile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="list-group">
+
+        <a href="{% url 'mobile'  %}" class="list-group-item list-group-item-action bg-light">All Mobiles</a>
+        <a href="{% url 'mobiledata' 'redmi'  %}" class="list-group-item list-group-item-action">Redmi</a>
+        <a href="{% url 'mobiledata' 'oppo'  %}" class="list-group-item list-group-item-action">Oppo</a>
+        <a href="{% url 'mobiledata' 'vivo'  %}" class="list-group-item list-group-item-action">Vivo</a>
+        <br>
+        <h4>Price range</h4>
+        <a href="{% url 'mobiledata' 'below'  %}" class="list-group-item list-group-item-action">price &le; 15000</a>
+        <a href="{% url 'mobiledata' 'above'  %}" class="list-group-item list-group-item-action">price &ge; 15000</a>
+      </div>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+      {% for M in mobiles %}
+      <a href="{% url 'product-detail' M.id %}" class="btn">
+        <div class="item"><img src="{{M.product_image.url}}" alt="" width="200px"
+            height="250px"><br>
+          <div style="background-color:rgb(164, 196, 224); margin-top:0.5rem">
+            <span class="fs-5">{{M.title}}</span><br>
+            <span class="fs-6">Rs. {{M.discount_price}}</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

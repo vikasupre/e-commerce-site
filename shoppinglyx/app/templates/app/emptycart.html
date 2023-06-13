@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Cart{% endblock title %}
+{% block main-content %}
+<div class="container my-5 text-center">
+    <h2>Your cart is empty!!</h2>
+    <div>
+        <img src="{% static 'app/images/empty-cart.gif' %}" alt="">
+    </div>
+</div>
+
+{% endblock main-content %}
